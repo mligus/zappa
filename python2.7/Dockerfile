@@ -1,12 +1,12 @@
-FROM lambci/lambda:build-python3.6
+FROM lambci/lambda:build-python2.7
 
 MAINTAINER "Max Ligus" <max.ligus@gmail.com>
 
-RUN pip3 install -U pip && pip3 install -U zappa awscli
+RUN pip install -U pip && pip install -U zappa awscli 
 
 WORKDIR /var/task
 
-RUN python -m venv /var/venv && \
+RUN virtualenv /var/venv && \
     source /var/venv/bin/activate && \
     pip install -U pip && \
     deactivate
